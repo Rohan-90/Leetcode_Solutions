@@ -13,14 +13,14 @@ public:
         int count = 0;
         vector<bool> vec(n,true);
         vec[0] == vec[1] == false;
-        for(int i = 2; i < n; i++){
+        for(long long i = 2; i < n; i++){
             if(vec[i]){
                 count++;
-                int j = 2 * i;
+                long long j = i * i;
                 while(j < n){
                     vec[j] = false;
                     j += i;
-                }
+                } 
             }
         }
         return count;
