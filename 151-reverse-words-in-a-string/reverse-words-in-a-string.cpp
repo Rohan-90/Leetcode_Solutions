@@ -10,7 +10,7 @@ public:
             int j = i+1;
             while(j < n && s[j] != ' ') j++;
             string word = s.substr(i,j-i);
-            if(ans.length() != 0) ans = word + " " + ans;
+            if(!ans.empty()) ans = word + " " + ans;
             else ans += word;
             i = j + 1;
         }
