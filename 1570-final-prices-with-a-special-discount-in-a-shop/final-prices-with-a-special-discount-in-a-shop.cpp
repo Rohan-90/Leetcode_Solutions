@@ -10,7 +10,8 @@ public:
                     break;
                 } 
             }
-            ans.push_back(prices[i] - discount);
+            int diff = prices[i] - discount;
+            ans.push_back(diff);
         }
         return ans;
     }
