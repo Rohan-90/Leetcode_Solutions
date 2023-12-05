@@ -7,7 +7,7 @@ public:
                 count += n / 2; 
                 n = n / 2;
             }
-            else if(n % 2 == 1){
+            else{
                 count += n / 2; 
                 n = (n / 2) + 1;
             }
