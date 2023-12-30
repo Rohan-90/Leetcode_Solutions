@@ -1,18 +1,20 @@
 class Solution {
 public:
     bool makeEqual(vector<string>& words) {
-        string ans = "";
+        int ans = 0;
         int n = words.size();
         for(int i = 0; i < words.size(); i++){
-            ans += words[i];
+            ans += words[i].size();
         }
-        if(ans.size() % n != 0) return false;
+        if(ans % n != 0) return false;
 
-        unordered_map<char, int> hmp;
-        for(auto it : ans) hmp[it]++;
+        vector<int> chr(26, 0);
+        for(auto it : words){
+            for(auto c : it) chr[c - 'a']++;
+        }
 
-        for(auto it : hmp){
-            if(it.second % n != 0) return false;
+        for(auto it : chr){
+            if(it % n != 0) return false;
         }
         return true;
     }
