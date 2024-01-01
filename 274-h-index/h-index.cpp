@@ -5,7 +5,8 @@ public:
        sort(citations.begin(), citations.end());
        for(int i = 0; i < citations.size(); i++){
             if(citations[i] >= (citations.size() - i)){
-                if(citations.size() - i > num) num = citations.size() - i;
+                int diff = citations.size() - i;
+                num = max(diff, num);
             }
        }
        return num;
