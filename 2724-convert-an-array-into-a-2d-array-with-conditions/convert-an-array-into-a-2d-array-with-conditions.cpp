@@ -1,18 +1,18 @@
 class Solution {
 public:
     vector<vector<int>> findMatrix(vector<int>& nums) {
-        vector<vector<int>> ans;
         unordered_map<int,int> mp;
-        for(auto it : nums) mp[it]++;
-        while(!mp.empty()){
-            vector<int> temp, Erase;
-            for(auto &[f,s] : mp){
-                temp.push_back(f);
-                s--;
-                if(s == 0) Erase.push_back(f);
+        int maxi = 0;
+        for(auto it : nums){
+            mp[it]++;
+            maxi = max(maxi, mp[it]);
+        }
+        vector<vector<int>> ans(maxi);
+        for(auto it : mp){
+            int cnt = it.second;
+            for(int i = 0; i < cnt; i++){
+                ans[i].push_back(it.first);
             }
-            ans.push_back(temp);        
-            for(auto it : Erase) mp.erase(it);
         }
         return ans;
     }
