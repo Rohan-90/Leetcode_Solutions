@@ -1,7 +1,7 @@
 class Solution {
 public:
     int findJudge(int n, vector<vector<int>>& trust) {
-        if(trust.size() == 0 && n == 1) return n;
+      //  if(trust.size() == 0 && n == 1) return n;
         vector<int> store(n+1, 0);
         for(auto it : trust){
             store[it[0]]--;
@@ -9,7 +9,7 @@ public:
         }
 
         int ans = -1;
-        for(int i = 0; i <= n; i++){
+        for(int i = 1; i <= n; i++){
             if(store[i] == n -1) return i;
         }
         return -1;
