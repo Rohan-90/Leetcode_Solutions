@@ -2,18 +2,14 @@ class Solution {
 public:
     vector<int> dailyTemperatures(vector<int>& temperatures) {
         vector<int> ans(temperatures.size(), 0);
-        deque<int> dq;
-        for(int i = temperatures.size() - 1; i >= 0; i--){
-            if(dq.empty()){
-                dq.push_front(i);
-                ans[i] = 0;
+        stack<int> s;
+        for(int i = 0; i < temperatures.size(); i++){
+            while(!s.empty() && temperatures[i] > temperatures[s.top()]){
+                int index = s.top();
+                s.pop();
+                ans[index] = (i - index);
             }
-            else{
-                while(!dq.empty() && temperatures[i] >= temperatures[dq.front()]) dq.pop_front();
-                if(dq.empty()) ans[i] = 0;
-                else ans[i] = dq.front() - i;
-                dq.push_front(i);
-            }
+            s.push(i);
         }
         return ans;
     }
