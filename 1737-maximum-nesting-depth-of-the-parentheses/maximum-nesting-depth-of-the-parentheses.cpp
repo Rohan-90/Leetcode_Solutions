@@ -11,7 +11,6 @@ public:
             }
             else if(s[i] == ')' && st.top() == '(') count--;
             i++;
-            ans = max(ans, count);
         }
         return ans;
     }
