@@ -17,7 +17,6 @@ public:
                     solve(grid, i ,j);
                     count++;
                 }
-               
             }
         }
         return count;
