@@ -21,9 +21,15 @@ public:
         return 0;
     }
     int sumFourDivisors(vector<int>& nums) {
+        sort(nums.begin(), nums.end());
         long long int totalSum = 0;
+        int prevSum = 0;
         for(int i = 0; i < nums.size(); i++) {
-            totalSum += divisor(nums[i]);
+            if(i != 0 && nums[i] == nums[i - 1]) totalSum += prevSum;
+            else{
+                prevSum = divisor(nums[i]);
+                totalSum += prevSum;  
+            }
         }
         return int(totalSum);
     }
